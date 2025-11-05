@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Crop Analysis Result</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="card wide">
+    <h2>🌿 Crop Analysis</h2>
+
+    <div class="row">
+      <div class="col image-col">
+        <img src="{{ url_for('static', filename='uploads/' + image_file) }}" alt="uploaded image">
+      </div>
+
+      <div class="col">
+        <p><strong>Crop:</strong> {{ crop_name }}</p>
+        <p><strong>Farmer note:</strong> {{ crop_note or '—' }}</p>
+        <p><strong>Model loaded:</strong> {{ 'Yes' if model_loaded else 'No (fallback used)' }}</p>
+        <p><strong>Prediction:</strong> <span class="tag">{{ prediction }}</span></p>
+        <p><strong>Health Score:</strong> <span class="score">{{ confidence }}%</span></p>
+      </div>
+    </div>
+
+    <hr>
+    <h3>📊 Auto-detected parameters</h3>
+    <ul>
+      <li><strong>Temperature:</strong> {{ temp if temp is not none else 'N/A' }} °C</li>
+      <li><strong>Humidity:</strong> {{ humidity if humidity is not none else 'N/A' }} %</li>
+      <li><strong>Rainfall (24 h):</strong> {{ rainfall if rainfall is not none else 'N/A' }} mm</li>
+      <li><strong>Soil pH:</strong> {{ ph if ph is not none else 'N/A' }}</li>
+      <li><strong>Soil Moisture:</strong> {{ moisture if moisture is not none else 'N/A' }} %</li>
+      <li><strong>Coordinates:</strong> {{ lat }}, {{ lon }}</li>
+    </ul>
+
+    <h3>🌾 Confidence Distribution</h3>
+    <img src="{{ url_for('static', filename='uploads/' + graph_file) }}" width="400" alt="Confidence graph">
+
+    <h3>🔥 Disease Severity Level</h3>
+    <div style="padding:10px;border-radius:8px;background-color:{{ severity_color }}20;">
+      <strong style="color:{{ severity_color }}">{{ severity_label }}</strong>
+    </div>
+
+    <h3>📈 Disease Progression Over Time</h3>
+    <img src="{{ url_for('static', filename='uploads/' + progression_graph_file) }}" width="400" alt="Progression graph">
+
+    <h3>✅ General Suggestions</h3>
+    <ul>
+      {% for s in suggestions.general %}
+        <li>{{ s }}</li>
+      {% endfor %}
+    </ul>
+
+    <h3>🌱 Fertilizer & Treatment Recommendations</h3>
+    <ul>
+      {% for f in suggestions.fertilizer %}
+        <li>{{ f }}</li>
+      {% endfor %}
+    </ul>
+
+    <h3>🧴 Treatment Tips</h3>
+    <ul>
+      {% for s in suggestions.treatment %}
+        <li>{{ s }}</li>
+      {% endfor %}
+    </ul>
+
+    <h3>🌤 Smart Weather Insights</h3>
+    <ul>
+      {% for w in weather_insights %}
+        <li>{{ w }}</li>
+      {% endfor %}
+    </ul>
+
+    <h3>🌾 Crop Condition</h3>
+    <div class="status {{ condition_level|lower }}">
+      Condition Level: <strong>{{ condition_level }}</strong>
+    </div>
+
+    <a class="btn" href="/">🔄 Analyze another</a>
+  </div>
+</body>
+</html>

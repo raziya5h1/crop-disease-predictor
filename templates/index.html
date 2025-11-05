@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Smart Agriculture - Crop Health Predictor</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (pos) {
+          document.getElementById("lat").value = pos.coords.latitude;
+          document.getElementById("lon").value = pos.coords.longitude;
+          document.getElementById("locStatus").innerText = "📍 Location detected";
+        }, function(err){
+          alert("Location error: " + err.message + ". You can still submit the form.");
+        });
+      } else {
+        alert("Geolocation not supported by your browser.");
+      }
+    }
+
+    window.onload = function() {
+      // optional auto-detect on page load:
+      // getLocation();
+    };
+  </script>
+</head>
+<body>
+  <div class="card">
+    <h2>🌾 Smart Agriculture — Crop Health Predictor</h2>
+    <form action="/analyze" method="POST" enctype="multipart/form-data">
+      <label>Crop name</label>
+      <input name="crop_name" placeholder="e.g., Potato, Tomato" required>
+
+      <label>Crop condition (optional)</label>
+      <input name="crop_condition" placeholder="e.g., yellowing leaves">
+
+      <label>Upload crop image</label>
+      <input type="file" name="crop_image" accept="image/*" required>
+
+      <p class="muted" id="locStatus">Location not detected</p>
+      <input type="hidden" id="lat" name="lat">
+      <input type="hidden" id="lon" name="lon">
+
+      <div style="display:flex; gap:10px; margin-top:10px;">
+        <button type="button" onclick="getLocation()">📍 Auto-detect Location</button>
+        <button type="submit">🔎 Analyze</button>
+      </div>
+    </form>
+    <p class="note">Note: Weather & soil data are auto-fetched (Open-Meteo & SoilGrids). Model is optional — if present, image will be classified.</p>
+  </div>
+</body>
+</html>

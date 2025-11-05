@@ -1,0 +1,282 @@
+/* =========================
+   🌿 SMART AGRICULTURE THEME
+   ========================= */
+
+/* Global Layout */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #c8facc, #a0e39b);
+  color: #222;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Card Wrapper */
+.card {
+  width: 90%;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 80, 0, 0.15);
+  padding: 35px 45px;
+  margin: 40px auto;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 100, 0, 0.2);
+}
+
+/* =========================
+   HEADERS
+   ========================= */
+h1, h2, h3 {
+  color: #1b5e20;
+  margin-bottom: 15px;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+h2 {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.3rem;
+  color: #2e7d32;
+}
+
+/* =========================
+   INPUTS & FORM ELEMENTS
+   ========================= */
+input[type="text"],
+input[type="file"],
+input:not([type]),
+textarea,
+select {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 10px 0 20px 0;
+  border-radius: 10px;
+  border: 2px solid #b2dfdb;
+  background-color: #f9fff9;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #43a047;
+  outline: none;
+  box-shadow: 0 0 6px rgba(67, 160, 71, 0.4);
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+button, .btn {
+  background: linear-gradient(135deg, #43a047, #2e7d32);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(67, 160, 71, 0.3);
+}
+
+button:hover, .btn:hover {
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(67, 160, 71, 0.4);
+}
+
+/* =========================
+   TAGS & STATUS LABELS
+   ========================= */
+.tag {
+  background: #43a047;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.score {
+  color: #1b5e20;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.status {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 500;
+  text-align: center;
+}
+.status.good { background: #e8f5e9; color: #1b5e20; }
+.status.moderate { background: #fff8e1; color: #fbc02d; }
+.status.bad { background: #ffebee; color: #c62828; }
+
+/* =========================
+   LOCATION / NOTES
+   ========================= */
+.muted {
+  color: #555;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.note {
+  background: #f1f8e9;
+  color: #33691e;
+  border-left: 4px solid #81c784;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* =========================
+   UPLOAD & IMAGE PREVIEW
+   ========================= */
+input[type="file"] {
+  border: 2px dashed #81c784;
+  background: #f9fff9;
+  cursor: pointer;
+}
+
+input[type="file"]:hover {
+  border-color: #43a047;
+  background: #eafbea;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-top: 15px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   RESULT PAGE
+   ========================= */
+.card.wide {
+  max-width: 1000px;
+  padding: 50px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  align-items: center;
+}
+
+.col {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Severity Highlight */
+.severity-box {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+.severity-box.low { background: #e8f5e9; color: #2e7d32; }
+.severity-box.moderate { background: #fff8e1; color: #fbc02d; }
+.severity-box.high { background: #ffebee; color: #c62828; }
+
+/* Lists */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li::before {
+  content: "🌱 ";
+}
+
+ul li {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+/* =========================
+   TABLE (Dashboard)
+   ========================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+th, td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+th {
+  background: #388e3c;
+  color: white;
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: #e8f5e9;
+}
+
+/* =========================
+   CHART
+   ========================= */
+canvas {
+  max-width: 100%;
+  border-radius: 12px;
+  background: #f9fff9;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  padding: 10px;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #444;
+  margin-top: 40px;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 768px) {
+  .card, .card.wide {
+    padding: 25px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  button, .btn {
+    width: 100%;
+  }
+}
